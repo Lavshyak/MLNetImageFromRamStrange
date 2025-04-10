@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFromFileOK", "ImageFromFileOK\ImageFromFileOK.csproj", "{D9DE9300-1375-453E-B4B7-46B13FB0276E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nugets", "Nugets\Nugets.csproj", "{B0B9545B-A3EF-4198-8E9E-EF3269574510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFromRamStrange", "ImageFromRamStrange\ImageFromRamStrange.csproj", "{010DF8C1-1499-4391-8BCF-2D4CC6D7AE5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9DE9300-1375-453E-B4B7-46B13FB0276E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DE9300-1375-453E-B4B7-46B13FB0276E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DE9300-1375-453E-B4B7-46B13FB0276E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DE9300-1375-453E-B4B7-46B13FB0276E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B9545B-A3EF-4198-8E9E-EF3269574510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B9545B-A3EF-4198-8E9E-EF3269574510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B9545B-A3EF-4198-8E9E-EF3269574510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B9545B-A3EF-4198-8E9E-EF3269574510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010DF8C1-1499-4391-8BCF-2D4CC6D7AE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010DF8C1-1499-4391-8BCF-2D4CC6D7AE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010DF8C1-1499-4391-8BCF-2D4CC6D7AE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010DF8C1-1499-4391-8BCF-2D4CC6D7AE5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
