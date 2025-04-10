@@ -3,7 +3,7 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using SkiaSharp;
 
-var config = new Config(2, 2, 1, Path.Combine(Environment.CurrentDirectory, "images"));
+var config = new Config(2, 2, 1);
 
 var mlContext = new MLContext();
 
@@ -26,19 +26,22 @@ var pipeline =
 
 var bitmapsAndPathsAndLabels = new[]
 {
-    new { Bitmap = CreateSkBitmap(), FilePath = Path.Combine(config.ImagesRoot, "1.jpg"), LabelValue = "1" },
-    new { Bitmap = CreateSkBitmap(), FilePath = Path.Combine(config.ImagesRoot, "2.jpg"), LabelValue = "2" },
-    new { Bitmap = CreateSkBitmap(), FilePath = Path.Combine(config.ImagesRoot, "3.jpg"), LabelValue = "3" },
+    new { Bitmap = CreateSkBitmap(), LabelValue = "1" },
+    new { Bitmap = CreateSkBitmap(), LabelValue = "2" },
+    new { Bitmap = CreateSkBitmap(), LabelValue = "3" },
 };
-Directory.CreateDirectory(config.ImagesRoot);
-foreach (var bitmapAndPathAndLabel in bitmapsAndPathsAndLabels)
-{
-    File.WriteAllBytes(bitmapAndPathAndLabel.FilePath,
-        SKImage.FromBitmap(bitmapAndPathAndLabel.Bitmap).Encode(SKEncodedImageFormat.Jpeg, 100).ToArray());
-}
 
-var trainingData = bitmapsAndPathsAndLabels.Select(b => new DataModels.DataInput()
-    { SourceImage = MLImage.CreateFromFile(b.FilePath), LabelValue = b.LabelValue }).ToArray();
+var trainingData = bitmapsAndPathsAndLabels.Select(b =>
+{
+    var skImage = SKImage.FromBitmap(b.Bitmap);
+    var imageBytes = skImage.Encode(SKEncodedImageFormat.Jpeg, 100).ToArray();
+    using var stream = new MemoryStream(imageBytes);
+    var mlImage = MLImage.CreateFromStream(stream);
+    
+    return new DataModels.DataInput()
+        { SourceImage = mlImage, LabelValue = b.LabelValue };
+    
+}).ToArray();
 
 var trainingDataView = mlContext.Data.LoadFromEnumerable(trainingData);
 
@@ -65,6 +68,5 @@ SKBitmap CreateSkBitmap()
 public record Config(
     int TargetImageHeight,
     int TargetImageWidth,
-    int RandomSeed,
-    string ImagesRoot
+    int RandomSeed
 );
